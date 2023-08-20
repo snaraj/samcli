@@ -1,0 +1,16 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  DEFAULT_TASK: "default-task!"
+
+tasks:
+  build:
+    cmd:
+      - echo "building {{.APP_NAME}} binary"
+      - go b
+  default:
+    cmds:
+      - echo "{{.DEFAULT_TASKt}}"
+    silent: false
