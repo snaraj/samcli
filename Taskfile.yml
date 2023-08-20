@@ -1,16 +1,18 @@
-# https://taskfile.dev
-
 version: '3'
 
 vars:
-  DEFAULT_TASK: "default-task!"
+  BIN:
+    sh: git rev-parse --show-toplevel
+  APP_NAME:
+    sh: basename $(git config --get remote.origin.url) .git
 
 tasks:
   build:
-    cmd:
-      - echo "building {{.APP_NAME}} binary"
-      - go b
+    cmds:
+      - go build -o "{{.BIN}}"/bin
   default:
     cmds:
-      - echo "{{.DEFAULT_TASKt}}"
+      - echo "{{.DEFAULT_TASK}}"
     silent: false
+    vars:
+      DEFAULT_TASK: "default-task!"
